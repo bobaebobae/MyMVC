@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>MyMVC</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- =================== 서블릿(Servlet) 등록하기 ================아 이 web 부분을 배치서술자라고 하는구나======= -->
+  <servlet>
+  	<servlet-name>getMethodTest1</servlet-name>
+  	<servlet-class>begin.chap02.GetMethodTest1</servlet-class><!-- 클래스 이름   . 이 클래스가 받아서 처리함.-->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>getMethodTest1</servlet-name>	<!-- was야 (알려주는 것임, 기억시키는 것) 서블릿 name은 이거고 url은 저거야.. -->
+	<url-pattern>/getMethodTest1.do</url-pattern> 	<!-- /MyMVC 이건 생략되어져 있어서 쓰지마라!! 여기에 /MyMVC가 숨겨져 있음.  쓰면 웹에서 /MyMVC//MyMVC/getMethodTest1.do 로 인식함. -->
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>postMethodTest2</servlet-name>
+  	<servlet-class>begin.chap02.PostMethodTest2</servlet-class><!-- 클래스 이름   . 이 클래스가 받아서 처리함.-->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>postMethodTest2</servlet-name>	<!-- was야 (알려주는 것임, 기억시키는 것) 서블릿 name은 이거고 url은 저거야.. -->
+	<url-pattern>/postMethodTest2.do</url-pattern> 	<!-- /MyMVC 이건 생략되어져 있어서 쓰지마라!! 여기에 /MyMVC가 숨겨져 있음.  쓰면 웹에서 /MyMVC//MyMVC/getMethodTest1.do 로 인식함. -->
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>get_postMethodTest3</servlet-name>
+  	<servlet-class>begin.chap02.Get_postMethodTest3</servlet-class><!-- 클래스 이름   . 이 클래스가 받아서 처리함.-->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>get_postMethodTest3</servlet-name>	<!-- was야 (알려주는 것임, 기억시키는 것) 서블릿 name은 이거고 url은 저거야.. -->
+	<url-pattern>/get_postMethodTest3.do</url-pattern> 	<!-- /MyMVC 이건 생략되어져 있어서 쓰지마라!! 여기에 /MyMVC가 숨겨져 있음.  쓰면 웹에서 /MyMVC//MyMVC/getMethodTest1.do 로 인식함. -->
+  </servlet-mapping>
+
+<!-- 필터(Filter) 등록하기  서블릿 가기전에 데이터 가공 용도  // 안깨질라고 filter 등록했구나,, 아,, 모든 서블릿 동작 전 필터먼저 실행,,, -->		  
+  <filter>
+  	<filter-name>setCharacterEncoding</filter-name>
+  	<filter-class>my.filter.MyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>setCharacterEncoding</filter-name>
+  	<url-pattern>/*</url-pattern> <!-- 모든 것 얘가 먼저 하기 때문에 한글 작성하게해라,,,그건 안써도 됨,,,???? -->
+  </filter-mapping>
+
+<!--  === NumberFormatException 등록하기 -->
+	<error-page>
+		<exception-type>java.lang.NumberFormatException</exception-type>
+		<location>/01begin/chap05_exception/07error3.jsp</location>
+	</error-page>
+	
+ <!-- ========= MyDBCP Setting Start  ===========  -->
+  <resource-ref>
+ 	<description>Oracle Datasource example</description>
+ 	<res-ref-name>jdbc/myoracle</res-ref-name>
+ 	<res-type>javax.sql.DataSource</res-type>
+ 	<res-auth>Container</res-auth>
+  </resource-ref>
+  <!-- ========= MyDBCP Setting End  ===========  -->
+
+
+</web-app>

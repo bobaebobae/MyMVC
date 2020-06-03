@@ -1,0 +1,10 @@
+실행할 때  빨갛게 오류 뜰 땐 라이브러리가 없다는 뜻
+ 오라클은 ojdbc6어쩌거 필요
+ add external jars 눌러서 C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 여기서 oracle6 연결시켜줌
+ 
+ 
+ context name이라 부름   (HTML5, 자바스크립트스터디, 제이쿼리스터디,,,,)
+ 
+ 
+ 
+ HTTP 상태 500 – 내부 서버 오류 : 코딩을 잘못해쭸다는 뜻!!!!!
